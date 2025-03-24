@@ -38,14 +38,19 @@ def about(request):
     return HttpResponse(text)
 
 def product(request, id):
-#    even_numbers = [x for x in my_list if x % 2 == 0]
+    text = ''
     for item in items :
         for key, value in item.items():
             if key == "id" and  value==id:
-                text=f""" 
+                text = f""" 
                 Название: <b>{item["name"]}</b><br>
                 Количество: <b>{item["quantity"]} </b><br>
-                """   
+                """  
+            break
+    if text == '':
+            text = f""" 
+               товар c id = {id} не найден
+                """
     return HttpResponse(text)
     
 
