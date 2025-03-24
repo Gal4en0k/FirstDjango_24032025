@@ -52,7 +52,15 @@ def product(request, id):
                товар c id = {id} не найден
                 """
     return HttpResponse(text)
-    
+
+def productList(request):
+    text = ''
+    for item in items :
+         s = f"""
+            {item["id"]}. {item["name"]}<br>
+            """
+         text = text + s
+    return HttpResponse(text)   
 
 
 
