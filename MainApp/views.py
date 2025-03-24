@@ -51,15 +51,16 @@ def product(request, id):
             text = f""" 
                товар c id = {id} не найден
                 """
+    text = text + f"""<a href=/items> Назад к списку товаров</a><br>"""
     return HttpResponse(text)
 
 def productList(request):
     text = ''
     for item in items :
          s = f"""
-            {item["id"]}. {item["name"]}<br>
+            {item["id"]}. <a href=/item\{item["id"]}> {item["name"]}</a><br>
             """
-         text = text + s
+         text = text + s 
     return HttpResponse(text)   
 
 
