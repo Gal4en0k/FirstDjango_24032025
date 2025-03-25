@@ -27,21 +27,17 @@ def about(request):
     "Phone": "8-923-600-01-02",
     "email": "vasya@mail.ru"
     }
-    
-    text=f""" 
-    Имя: <b>{author["FirstName"]}</b><br>
-    Отчество: <b> {author["SecondName"]}</b><br>
-    Фамилия: <b>{author["Family"]}</b><br>
-    Телефон: {author["Phone"]}<br>
-    email:{author["email"]}<br>
-    """
-    return HttpResponse(text)
+    return render(request, "about.html", {"author": author})
 
 def get_item(request, item_id):
-    for item in items :
-        if item['id'] == item_id:
-            return render(request, "item.html", item)
+    # for item in items :
+    #     if item['id'] == item_id:
+    #         return render(request, "item.html", item)
     
+    # return HttpResponseNotFound(f"item with id={item_id} not found")
+    item = next((item for item in items if item['id'] == item_id), None)
+    if item is not None:
+        return render(request, "item.html", item)
     return HttpResponseNotFound(f"item with id={item_id} not found")
 
 def get_items(request):
