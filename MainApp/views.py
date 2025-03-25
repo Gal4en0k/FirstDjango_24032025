@@ -20,12 +20,11 @@ items = [
 ]
 
 def home(request):
-    
-    text=f""" 
-    "<h1>"Изучаем django"</h1>
-    <strong>Автор</strong>: <i>{myfio}</i>" \
-    """
-    return HttpResponse(text)
+    context = {
+        "name": "Петров Петр Петрович",
+        "email": "my_mail@mail.ru"
+    }
+    return render(request, "index.html", context)
 
 def about(request):
     text=f""" 
