@@ -3,13 +3,6 @@ from django.http import HttpResponse, HttpResponseNotFound
 
 
 myfio = "Чухвичёва Г.А."
-author = {
-    "FirstName": "Иван",
-    "SecondName": "Петрович",
-    "Family": "Иванов",
-    "Phone": "8-923-600-01-02",
-    "email": "vasya@mail.ru"
-}
 
 items = [
 {"id": 1, "name": "Кроссовки abibas" ,"quantity":5},
@@ -27,6 +20,14 @@ def home(request):
     return render(request, "index.html", context)
 
 def about(request):
+    author = {
+    "FirstName": "Иван",
+    "SecondName": "Петрович",
+    "Family": "Иванов",
+    "Phone": "8-923-600-01-02",
+    "email": "vasya@mail.ru"
+    }
+    
     text=f""" 
     Имя: <b>{author["FirstName"]}</b><br>
     Отчество: <b> {author["SecondName"]}</b><br>
