@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог</title>
+    <style>
+        h1 {color:green}
+        .card {
+            border: 5px outset orange;
+            background-color: white;
+            text-align: center;
+            display: inline-block;
+            width: 300px;
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="/">Home</a>    <a href="/items">Items</a>    <a href="/about">About</a>
+    </header>
+
+    <h1>Каталог товаров</h1>
+    {% for item in items%}   
+    <div class="card"> <b><a href=/item/{{item.id}} style ="color:green; font-size:20px"> {{item.name}}</a></b> <br> <br> {{item.description}} </div>
+    {% endfor %} 
+   
+</body>
+</html>

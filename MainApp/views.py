@@ -41,7 +41,7 @@ def get_items(request):
     context = {
         "items": Item.objects.all()
         }
-    return render(request, "items.html", context)
-
+    #return render(request, "items.html", context)
+    return render(request, "item_cards.html", context)
 
 
