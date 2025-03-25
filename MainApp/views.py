@@ -36,49 +36,18 @@ def about(request):
     """
     return HttpResponse(text)
 
-#def product(request, item_id):
-#    text = ''
-#    for item in items :
-#        #if item['id'] == item_id:
-#        for key, value in item.items():
-#            if key == "id" and  value==item_id:
-#                text = f""" 
-#                Название: <b>{item["name"]}</b><br>
-#                Количество: <b>{item["quantity"]} </b><br>
-#                """  
-#            break
-#    if text == '':
-#            text = f""" 
-#               товар c id = {id} не найден
-#                """
-#    text = text + f"""<a href=/items> Назад к списку товаров</a><br>"""
-#    return HttpResponse(text)
-
 def get_item(request, item_id):
     for item in items :
         if item['id'] == item_id:
-            result = f""" 
-            <h2>Название: {item["name"]}</h2>
-            <p>Количество: {item["quantity"]} </p>
-            <p><a href=/items> Назад к списку товаров</a></p>
-            """  
-            return HttpResponse(result)
+            return render(request, "item.html", item)
+    
     return HttpResponseNotFound(f"item with id={item_id} not found")
 
-#def productList(request):
-#    text = ''
-#    for item in items :
-#         s = f"""
-#            {item["id"]}. <a href=/item\{item["id"]}> {item["name"]}</a><br>
-#            """
-#         text = text + s 
-#    return HttpResponse(text)   
-
 def get_items(request):
-    result = "<h1>Список товаров</h1><ol>"
-    for item in items :
-        result += f""" <li> <a href=/item/{item["id"]}> {item["name"]}</li> """
-    result +="</ol>"
-    return HttpResponse(result)
+    context = {
+        "items": items
+    }
+    return render(request, "items.html", context)
+
 
 
