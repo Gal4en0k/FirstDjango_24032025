@@ -12,10 +12,20 @@
 5. `python manage.py runserver`
 
 ## Запуск `ipython` в контексте приложения `django`
-
+```
 python manage.py shell_plus --ipython 
+```
+## Выгрузить данные из БД 
+#по модели MainApp
+```
+python manage.py dumpdata MainApp --indent 4 > ./fixtures/items.json
+```
+## Загрузка данных из БД
+```
+python manage.py loaddata ./fixtures/items.json
+```
 
-##Дополнительно
+## Дополнительно
 1. Полезное дополнение для шаблонов `Django`
 
 ext install batisteo.vscode-django

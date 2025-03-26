@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseNotFound
 from .models import Item
+from django.core.exceptions import ObjectDoesNotExist
 
 
 myfio = "Чухвичёва Г.А."
@@ -30,12 +31,12 @@ def get_item(request, item_id):
     # return HttpResponseNotFound(f"item with id={item_id} not found")
     #item = next((item for item in items if item['id'] == item_id), None)
     try:
-        content = {
-        "item": Item.objects.get(id=item_id)
-        }
-        #if content is not None:
+        item = Item.objects.get(id=item_id)   
+    except ObjectDoesNotExist: 
+        return HttpResponseNotFound(f"item with id={item_id} not found")
+    else: 
+        content = {"item": item}
         return render(request, "item.html", content)
-    except: return HttpResponseNotFound(f"item with id={item_id} not found")
 
 def get_items(request):
     context = {

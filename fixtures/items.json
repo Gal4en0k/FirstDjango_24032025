@@ -1,0 +1,52 @@
+[
+{
+    "model": "MainApp.item",
+    "pk": 1,
+    "fields": {
+        "name": "Кроссовки",
+        "brand": "abibas",
+        "count": 10,
+        "description": "стильные кроссовки из суперсовременных материалов модного белого цвета"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 2,
+    "fields": {
+        "name": "Чипсы картофельные",
+        "brand": "Noname",
+        "count": 15,
+        "description": "вкусные диетические из натуральной картошки запеченые без использования масла"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 3,
+    "fields": {
+        "name": "Велосипед дорожный",
+        "brand": "Stels",
+        "count": 0,
+        "description": "описание будет добавлено позднее"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 4,
+    "fields": {
+        "name": "Сок яблочный 0.2л",
+        "brand": "Добрый",
+        "count": 200,
+        "description": "100% натуральный яблочный сок из самых спелых яблок"
+    }
+},
+{
+    "model": "MainApp.item",
+    "pk": 5,
+    "fields": {
+        "name": "Куртка",
+        "brand": "Версаче",
+        "count": 2,
+        "description": "из самого Парижа, точно-точно"
+    }
+}
+]
