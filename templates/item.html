@@ -1,28 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Выбранная позиция</title>
-</head>
-<body>
-    <header>
-        <a href="/">Home</a>    <a href="/items">Items</a>    <a href="/about">About</a>
-    </header>
-    <h2>Название: {{ item.name }}</h2>
-    <p>Бренд: {{ item.brand }}</p>
-    {% comment %} {% if item.count > 0 %} {% endcomment %}
-    <div>
-        Количество: {{ item.count | default:"Товар отсутствует" }} 
-    </div>
-    <div>
-        Описание: {{ item.description}} 
-    </div>    
-    {% comment %} {% else %}
-    <p> товар отсутствует на складе</p>
-    {% endif %} {% endcomment %}
-    <br>
-    <br>
-    <p><a href="/items"> Назад к списку товаров</a></p>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<h2>Название: {{ item.name }}</h2>
+<p>Бренд: {{ item.brand }}</p>
+{% comment %} {% if item.count > 0 %} {% endcomment %}
+<div>
+    Количество: {{ item.count | default:"Товар отсутствует" }} 
+</div>
+<div>
+    Описание: {{ item.description}} 
+</div>    
+{% comment %} {% else %}
+<p> товар отсутствует на складе</p>
+{% endif %} {% endcomment %}
+<br>
+<br>
+<p><a href="{% url 'items-list'%}"> Назад к списку товаров</a></p>
+{% endblock %}

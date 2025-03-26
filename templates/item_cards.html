@@ -1,8 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Каталог</title>
+    {% extends 'base.html' %}
+    {% block style %}
     <style>
         * {
             box-sizing: border-box;
@@ -55,18 +52,16 @@
             height: 400px;
         } {% endcomment %}
     </style>
-</head>
-<body>
-    <header>
-        <a href="/">Home</a>    <a href="/items">Items</a>    <a href="/about">About</a>
-    </header>
-
+    {% endblock %}
+ 
+    {% block content %}
     <h2>Каталог товаров</h2>
 
     <div class="items">
         {% for item in items%}   
         <div class="item"> 
-            <a href="/item/{{item.id}}">
+            {% comment %} <a href="/item/{{item.id}}"> {% endcomment %}
+            <a href="{% url 'item-detail' item.id %}">
             <p class="item_name"> {{item.name}}</p>
             <p> Бренд: {{item.brand}} </p>
             <p> описание товара </p>
@@ -75,5 +70,4 @@
     </div>
     {% endfor %} 
     </div>
-</body>
-</html>
+    {% endblock %}
