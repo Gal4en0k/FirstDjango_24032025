@@ -1,73 +1,31 @@
     {% extends 'base.html' %}
+
+    {% load static %}
+
+    {% block title %}
+        Item cards
+    {% endblock  %}
+
     {% block style %}
-    <style>
-        * {
-            box-sizing: border-box;
-        }
-        .item{
-            width: 150pt;
-            height: 100%;
-            margin: 10px;
-            box-shadow: 1px 2px 4px rgba(0,0,0, 0.1)  
-            border-radius: 4px;
-            padding-top:10px;
-            background: rgba(223,241,244,0.625);          
-        }
-        .item:hover {
-            background: rgb(207,232,237)
-            box-shadow: 4px 8px 16px rgba(71,215,240)
-        }
-        .item p{
-            padding-left: 10px ;
-            padding-right: 10px ;
-        }
-        .item_name{
-            font-size: 1.5em;
-            text-align:center;
-        }
-        .item a{
-            text-decoration: none;
-            color: black;
-            text-align: justify;
-        }
-        .items {
-            width: 100%;
-            display: grid;
-            grid-template-columns: repeat(auto-fill, 200px);
-            max-width: 1200px;
-            justify-content: center;
-            justify-items: center;
-            column-gap: 30px;
-            row-gap: 40px;
-            margin: 0 auto;
-        }
+        {{ block.super}}
+        <link rel="stylesheet" href="{% static "css/style.css" %}">
+    {% endblock  %}
 
-        {% comment %} h1 {color:green}
-        .card {
-            border: 5px outset orange;
-            background-color: white;
-            text-align: center;
-            display: inline-block;
-            width: 300px;
-            height: 400px;
-        } {% endcomment %}
-    </style>
-    {% endblock %}
- 
     {% block content %}
-    <h2>Каталог товаров</h2>
+        {{ block.super}}
+        <h2>Каталог товаров</h2>
 
-    <div class="items">
-        {% for item in items%}   
-        <div class="item"> 
-            {% comment %} <a href="/item/{{item.id}}"> {% endcomment %}
-            <a href="{% url 'item-detail' item.id %}">
-            <p class="item_name"> {{item.name}}</p>
-            <p> Бренд: {{item.brand}} </p>
-            <p> описание товара </p>
-            <p>{{item.description}} </p>
-            </a>
-    </div>
-    {% endfor %} 
-    </div>
+        <div class="items">
+            {% for item in items%}   
+            <div class="item"> 
+                {% comment %} <a href="/item/{{item.id}}"> {% endcomment %}
+                <a href="{% url 'item-detail' item.id %}">
+                <p class="item_name"> {{item.name}}</p>
+                <p> Бренд: {{item.brand}} </p>
+                <p> описание товара </p>
+                <p>{{item.description}} </p>
+                </a>
+            </div>
+             {% endfor %} 
+        </div>
     {% endblock %}
