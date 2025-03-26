@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
 
+{% load static %}
+
 {% block title %}
     Item page
 {% endblock  %}
+
+{% block style %}
+{{ block.super}}
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+{% endblock  %}
+
 {% block content %}
     {{ block.super}}
 <h2>Название: {{ item.name }}</h2>
@@ -13,10 +21,19 @@
 </div>
 <div>
     Описание: {{ item.description}} 
-</div>    
-{% comment %} {% else %}
-<p> товар отсутствует на складе</p>
-{% endif %} {% endcomment %}
+</div>
+<br>
+<i>Цвета</i>
+    {% if colors %}
+        <ul class='ul_no_mark'>
+        {% for color in colors %}
+        <li><div class='div_color' style='background-color: {{color.name}};'> </div>&nbsp;&nbsp{{color.name}}</li>
+        {% endfor %}
+        </ul>
+    {% else %}
+        нет цвета
+    {% endif %}
+   
 <br>
 <br>
 <p><a href="{% url 'items-list'%}"> Назад к списку товаров</a></p>

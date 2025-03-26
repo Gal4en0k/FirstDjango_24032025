@@ -31,11 +31,13 @@ def get_item(request, item_id):
     # return HttpResponseNotFound(f"item with id={item_id} not found")
     #item = next((item for item in items if item['id'] == item_id), None)
     try:
-        item = Item.objects.get(id=item_id)   
+        item = Item.objects.get(id=item_id) 
+        if item.colors.exists(): 
+            colors = item.colors.all()  
     except ObjectDoesNotExist: 
         return HttpResponseNotFound(f"item with id={item_id} not found")
     else: 
-        content = {"item": item}
+        content = {"item": item, "colors": colors}
         return render(request, "item.html", content)
 
 def get_items(request):

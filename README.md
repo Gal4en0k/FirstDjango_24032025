@@ -16,9 +16,11 @@
 python manage.py shell_plus --ipython 
 ```
 ## Выгрузить данные из БД 
-#по модели MainApp
+#по всем моделям MainApp, только для Item, только для color
 ```
 python manage.py dumpdata MainApp --indent 4 > ./fixtures/items.json
+python manage.py dumpdata MainApp.item --indent 4 > ./fixtures/item_only.json
+python manage.py dumpdata MainApp.color --indent 4 > ./fixtures/color_only.json
 ```
 ## Загрузка данных из БД
 ```
