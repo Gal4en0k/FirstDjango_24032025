@@ -24,14 +24,9 @@ def about(request):
     return render(request, "about.html", {"author": author})
 
 def get_item(request, item_id):
-    # for item in items :
-    #     if item['id'] == item_id:
-    #         return render(request, "item.html", item)
-    
-    # return HttpResponseNotFound(f"item with id={item_id} not found")
-    #item = next((item for item in items if item['id'] == item_id), None)
-    try:
+    try: 
         item = Item.objects.get(id=item_id) 
+        colors =[]
         if item.colors.exists(): 
             colors = item.colors.all()  
     except ObjectDoesNotExist: 
